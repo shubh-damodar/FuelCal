@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:FuelCal/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,28 +41,6 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
     setState(() {
       textValue = TextEditingController(text: allDigits);
     });
-  }
-
-  // ignore: non_constant_identifier_names
-  PatternVibrate() {
-    HapticFeedback.mediumImpact();
-
-    sleep(
-      const Duration(milliseconds: 200),
-    );
-
-    HapticFeedback.mediumImpact();
-
-    sleep(
-      const Duration(milliseconds: 500),
-    );
-
-    HapticFeedback.mediumImpact();
-
-    sleep(
-      const Duration(milliseconds: 200),
-    );
-    HapticFeedback.mediumImpact();
   }
 
   buildNumberPad() {
@@ -184,14 +160,6 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
       ),
     );
   }
-
-  // OutlineInputBorder borderTextField = OutlineInputBorder(
-  //   borderRadius: BorderRadius.circular(5.0),
-  //   borderSide: BorderSide(
-  //     color: Color(0xFFD9D9D9),
-  //     style: BorderStyle.solid,
-  //   ),
-  // );
 
   TextEditingController textValue = TextEditingController();
 

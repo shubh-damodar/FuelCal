@@ -15,6 +15,7 @@ MaterialColor primarySwatchColor =
 });
 
 Color darkBlueColor = Color.fromRGBO(59, 131, 252, 1.0);
+
 Color greyColor = Color(0xFF707070);
 
 class HexColor extends Color {
@@ -28,5 +29,3 @@ class HexColor extends Color {
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
-
-// Text form field--------------------->
