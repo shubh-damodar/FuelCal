@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "676749540939",
+    "firebase_url": "https://fuelcal-22397.firebaseio.com",
+    "project_id": "fuelcal-22397",
+    "storage_bucket": "fuelcal-22397.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676749540939:android:210a4512db582a133597ce",
+        "android_client_info": {
+          "package_name": "com.example.FuelCal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676749540939-ij8v4b8knafku3tm85b8rk591s8hsr3c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.FuelCal",
+            "certificate_hash": "4efa9f0cf1a6d22a73ab920c8a7c0582492b5d2f"
+          }
+        },
+        {
+          "client_id": "676749540939-1njo8e5npq5rmt2m5d83cvglqlsub187.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU9JMZOaa4hCrAaIb0SNaRXDTUUX8A-UU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676749540939-1njo8e5npq5rmt2m5d83cvglqlsub187.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
+import 'package:FuelCal/login.dart';
 import 'package:FuelCal/utils.dart';
 import 'package:flutter/material.dart';
-
 import 'HomeScreen.dart';
 
 void main() {
@@ -8,7 +8,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Poppins',
       ),
-      home: MyHomePage(),
+      home: LoginPage(),
     );
   }
 }

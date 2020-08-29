@@ -1,5 +1,6 @@
 import 'package:FuelCal/Input/amount_input.dart';
 import 'package:FuelCal/Input/distance_input.dart';
+import 'package:FuelCal/Input/fuel_economy_input.dart';
 import 'package:FuelCal/Input/fuel_input.dart';
 import 'package:FuelCal/Input/price_input.dart';
 import 'package:FuelCal/utils.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  MyHomePage({Key key, this.distance}) : super(key: key);
+  final String distance;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -22,6 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController fuelController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController amountController = TextEditingController();
+  TextEditingController fuelEconomyController = TextEditingController();
 
   bool option;
 
@@ -63,10 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      if (selectedJob != "Economy") {}
-                      selectedJob = "Economy";
-                    });
+                    if (selectedJob != "Economy") {}
+                    selectedJob = "Economy";
+                    option = true;
+                    setState(() {});
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -109,10 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      if (selectedJob != "Distance") {}
-                      selectedJob = "Distance";
-                    });
+                    if (selectedJob != "Distance") {}
+                    selectedJob = "Distance";
+                    option = true;
+                    setState(() {});
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -156,10 +158,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      if (selectedJob != "Fuel") {}
-                      selectedJob = "Fuel";
-                    });
+                    if (selectedJob != "Fuel") {}
+                    selectedJob = "Fuel";
+                    option = true;
+                    setState(() {});
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -201,10 +203,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      if (selectedJob != "Amount") {}
-                      selectedJob = "Amount";
-                    });
+                    if (selectedJob != "Amount") {}
+                    selectedJob = "Amount";
+                    option = true;
+                    setState(() {});
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -248,67 +250,219 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          option == true
-              ? Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      DistanceInput(
-                        titleTextCtrl: distanceController,
-                      ),
-                      FuelInput(
-                        fuelController: fuelController,
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(right: 10, top: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                optionAndBack();
-                              },
-                              child: Text("Option >>"),
-                            ),
-                            // Getu(child: ),
-                          ],
+          if (selectedJob == "Economy")
+            option == true
+                ? Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        DistanceInput(distanceTextCtrl: distanceController),
+                        FuelInput(fuelController: fuelController),
+                        Container(
+                          padding: EdgeInsets.only(right: 10, top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("Option >>"),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              : Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      DistanceInput(titleTextCtrl: distanceController),
-                      PriceInput(priceController: priceController),
-                      AmountInput(amountController: amountController),
-                      Container(
-                        padding: EdgeInsets.only(right: 10, top: 10, left: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                optionAndBack();
-                              },
-                              child: Text("<< Back"),
-                            ),
-                          ],
+                      ],
+                    ),
+                  )
+                : Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        DistanceInput(distanceTextCtrl: distanceController),
+                        PriceInput(priceController: priceController),
+                        AmountInput(amountController: amountController),
+                        Container(
+                          padding:
+                              EdgeInsets.only(right: 10, top: 10, left: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("<< Back"),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  )
+          else if (selectedJob == "Distance")
+            option == true
+                ? Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        FuelEconomyInput(
+                            fuelEconomyController: fuelEconomyController),
+                        FuelInput(fuelController: fuelController),
+                        Container(
+                          padding: EdgeInsets.only(right: 10, top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("Option >>"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        FuelEconomyInput(
+                            fuelEconomyController: fuelEconomyController),
+                        PriceInput(priceController: priceController),
+                        AmountInput(amountController: amountController),
+                        Container(
+                          padding:
+                              EdgeInsets.only(right: 10, top: 10, left: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("<< Back"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+          else if (selectedJob == "Fuel")
+            option == true
+                ? Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        FuelEconomyInput(
+                            fuelEconomyController: fuelEconomyController),
+                        DistanceInput(distanceTextCtrl: distanceController),
+                        Container(
+                          padding: EdgeInsets.only(right: 10, top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("Option >>"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        PriceInput(priceController: priceController),
+                        AmountInput(amountController: amountController),
+                        Container(
+                          padding:
+                              EdgeInsets.only(right: 10, top: 10, left: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("<< Back"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+          else if (selectedJob == "Amount")
+            option == true
+                ? Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        PriceInput(priceController: priceController),
+                        FuelInput(fuelController: fuelController),
+                        Container(
+                          padding: EdgeInsets.only(right: 10, top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("Option >>"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        PriceInput(priceController: priceController),
+                        FuelEconomyInput(
+                            fuelEconomyController: fuelEconomyController),
+                        DistanceInput(distanceTextCtrl: distanceController),
+                        Container(
+                          padding:
+                              EdgeInsets.only(right: 10, top: 10, left: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () {
+                                  optionAndBack();
+                                },
+                                child: Text("<< Back"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         onPressed: () async {
-          finalResult = (double.parse(distanceController.text) /
-                  double.parse(fuelController.text))
-              .toString();
+          if (option == true) {
+            finalResult = (double.parse(distanceController.text) /
+                    double.parse(fuelController.text))
+                .toString();
+          } else {}
           setState(() {});
         },
         child: Icon(

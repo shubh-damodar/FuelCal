@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class DistanceInput extends StatefulWidget {
-  TextEditingController titleTextCtrl;
+  TextEditingController distanceTextCtrl;
 
-  DistanceInput({this.titleTextCtrl});
+  DistanceInput({this.distanceTextCtrl});
   @override
   _DistanceInputState createState() => _DistanceInputState();
 }
@@ -21,7 +21,7 @@ class _DistanceInputState extends State<DistanceInput> {
       padding: l10,
       color: Color(0xFFF8F8F8),
       child: TextFormField(
-          controller: widget.titleTextCtrl,
+          controller: widget.distanceTextCtrl,
           onTap: () async {
             returnNewDistance = await showDialog(
               context: context,
@@ -34,7 +34,7 @@ class _DistanceInputState extends State<DistanceInput> {
             returnNewDistance != null
                 ? storeNewDistance = returnNewDistance
                 : returnNewDistance = storeNewDistance;
-            widget.titleTextCtrl.text = returnNewDistance;
+            widget.distanceTextCtrl.text = returnNewDistance;
             setState(() {});
           },
           readOnly: true,
